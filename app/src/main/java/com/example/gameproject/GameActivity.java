@@ -27,14 +27,22 @@ public class GameActivity extends Activity {
     public void onBackPressed() {
         // TODO Auto-generated method stub
         gameSurface.close_sound();
+        gameSurface.gameThread.setRunning(false);
+        gameSurface.chibiList = null;
+        gameSurface.gameThread = null;
+        gameSurface.close_sound();
         super.onBackPressed();
     }
-
+    @Override
+    protected void onPause() {
+        gameSurface.gameThread = null;
+        gameSurface.chibiList = null;
+        gameSurface.close_sound();
+        super.onPause();
+    }
     protected void onResume() {
         super.onResume();
     }
-    protected void onPause() {
-        super.onPause();
-    }
+
 }
 

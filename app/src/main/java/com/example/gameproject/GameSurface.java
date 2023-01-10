@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -36,9 +37,9 @@ import java.util.Random;
 
 public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
-    private GameThread gameThread;
+    public GameThread gameThread;
 
-    private final List<ChibiCharacter> chibiList = new ArrayList<ChibiCharacter>();
+    public List<ChibiCharacter> chibiList = new ArrayList<ChibiCharacter>();
     private final List<Explosion> explosionList = new ArrayList<Explosion>();
 
     private static final int MAX_STREAMS=100;
@@ -47,7 +48,6 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
     private boolean soundPoolLoaded;
     private SoundPool soundPool;
-
 
     public GameSurface(Context context)  {
         super(context);
@@ -63,7 +63,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         this.initSoundPool();
     }
 
-    private void initSoundPool()  {
+    public void initSoundPool()  {
         // With Android API >= 21.
         if (Build.VERSION.SDK_INT >= 21 ) {
 
@@ -114,7 +114,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         if(this.soundPoolLoaded) {
             float leftVolumn = 0.8f;
             float rightVolumn =  0.8f;
-            // Play sound background.mp3
+            // Play sound explosion.wav
             int streamId = this.soundPool.play(this.soundIdBackground,leftVolumn, rightVolumn, 1, -1, 1f);
         }
     }
@@ -192,32 +192,43 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     // Implements method of SurfaceHolder.Callback
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+
+            if(gameThread != null){
+
+                create_anime();
+
+                this.gameThread = new GameThread(this, holder);
+                this.gameThread.setRunning(true);
+                this.gameThread.start();
+                //Toast.makeText(getContext(), "adad", Toast.LENGTH_LONG).show();
+            }
+            else{
+                create_anime();
+                this.gameThread = new GameThread(this, holder);
+                this.gameThread.setRunning(true);
+                this.gameThread.start();
+            }
+    }
+    public void create_anime(){
         Random randomNum = new Random();
         int enemy_size = randomNum.nextInt(10);
-        int x = 50, y =50;
-        for (int i = 0; i < enemy_size + 1; i++){
-            Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi1);
-            ChibiCharacter chibi1 = new ChibiCharacter(this,chibiBitmap1,randomNum.nextInt(this.getWidth()) +x ,randomNum.nextInt(this.getHeight()) + y);
+        int x = 50, y = 50;
+        for (int i = 0; i < enemy_size + 1; i++) {
+            Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi1);
+            ChibiCharacter chibi1 = new ChibiCharacter(this, chibiBitmap1, randomNum.nextInt(this.getWidth()) + x, randomNum.nextInt(this.getHeight()) + y);
             chibi1.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
             this.chibiList.add(chibi1);
 
-            x +=50;
-            y +=50;
+            x += 50;
+            y += 50;
         }
 
 
-        Bitmap chibiBitmap2 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi2);
-        ChibiCharacter chibi2 = new ChibiCharacter(this,chibiBitmap2,300,150);
+        Bitmap chibiBitmap2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi2);
+        ChibiCharacter chibi2 = new ChibiCharacter(this, chibiBitmap2, 300, 150);
         chibi2.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
         this.chibiList.add(chibi2);
-
-        this.gameThread = new GameThread(this,holder);
-        this.gameThread.setRunning(true);
-        this.gameThread.start();
-        //Toast.makeText(getContext(), "adad", Toast.LENGTH_LONG).show();
-
     }
-
     // Implements method of SurfaceHolder.Callback
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {

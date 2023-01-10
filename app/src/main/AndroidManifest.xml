@@ -12,6 +12,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:exported="true">
         </activity>
         <activity
@@ -22,6 +23,7 @@
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
