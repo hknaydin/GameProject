@@ -147,7 +147,22 @@ public class ChibiCharacter extends GameObject {
     }
 
     public void setSpeed(int speed_x, int speed_y){
-        this.speed_x = speed_x;
-        this.speed_y = speed_y;
+        if (this.speed_x <= 1)
+            this.speed_x = 1;
+        else {
+            this.speed_x = speed_x;
+        }
+        if(this.speed_y <=1)
+            this.speed_y = 2;
+        else {
+            this.speed_y = speed_y;
+        }
+    }
+
+    public int getSpeedX(){
+        return this.speed_x;
+    }
+    public int getSpeedY(){
+        return this.speed_y;
     }
 }

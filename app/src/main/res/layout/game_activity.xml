@@ -1,0 +1,57 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/arkaplan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/soundButton"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Volume Close"
+            android:textAllCaps="false"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/greenButton"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Green Panel"
+            android:textAllCaps="false"
+            android:textSize="18dp" />
+        <Button
+            android:id="@+id/speedIncreaseButton"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Speed Increase"
+            android:textAllCaps="false"
+            android:textSize="18dp" />
+        <Button
+            android:id="@+id/speedDecreaseButton"
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Decrease"
+            android:textAllCaps="false"
+            android:textSize="18dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="5dp"
+        android:layout_width="fill_parent"
+        android:background="@android:color/white"/>
+    <LinearLayout
+        android:id="@+id/customViewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    </LinearLayout>
+</LinearLayout>

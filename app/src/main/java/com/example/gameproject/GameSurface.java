@@ -46,8 +46,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     private int soundIdExplosion;
     private int soundIdBackground;
 
-    private boolean soundPoolLoaded;
-    private SoundPool soundPool;
+    public boolean soundPoolLoaded;
+    public SoundPool soundPool;
 
     public GameSurface(Context context)  {
         super(context);
@@ -58,6 +58,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         // Sét callback.
         this.getHolder().addCallback(this);
         this.setBackground(getResources().getDrawable(R.drawable.arkaplan));
+        //this.setBackground(getResources().getDrawable(R.color.teal_700));
         this.setZOrderOnTop(true);
         this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
         this.initSoundPool();
@@ -255,5 +256,16 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
     public void close_sound(){
         soundPool.release();
+    }
+    public void speed_increase_for_enemy(){
+        for(ChibiCharacter chibi: chibiList)  {
+            chibi.setSpeed(chibi.getSpeedX() + 2, 1 + chibi.getSpeedY());
+        }
+    }
+
+    public void speed_decrease_for_enemy(){
+        for(ChibiCharacter chibi: chibiList)  {
+            chibi.setSpeed(chibi.getSpeedX() - 2, chibi.getSpeedY() - 1);
+        }
     }
 }
