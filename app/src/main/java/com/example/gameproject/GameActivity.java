@@ -16,6 +16,7 @@ public class GameActivity extends Activity {
     private LinearLayout canvasLayout = null;
     private Button btnRed, btnGreen;
     int sound_check;
+    Button btnPuan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,8 @@ public class GameActivity extends Activity {
 
         setContentView(R.layout.game_activity);
 
-        gameSurface = new GameSurface(this);
+        btnPuan = findViewById(R.id.btnPuan);
+        gameSurface = new GameSurface(this, btnPuan);
         sound_check = 1;
         // This layout is used to contain custom surfaceview object.
         if(canvasLayout == null){
@@ -91,6 +93,7 @@ public class GameActivity extends Activity {
         this.setContentView(gameSurface);
 
         */
+
     }
     @Override
     public void onBackPressed() {

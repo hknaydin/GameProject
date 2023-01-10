@@ -43,6 +43,12 @@
             android:text="Decrease"
             android:textAllCaps="false"
             android:textSize="18dp" />
+        <Button
+            android:id="@+id/btnPuan"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="18dp"
+            android:text="Puan"/>
     </LinearLayout>
     <LinearLayout
         android:layout_height="5dp"

@@ -28,6 +28,7 @@ import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -48,13 +49,14 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
     public boolean soundPoolLoaded;
     public SoundPool soundPool;
-
-    public GameSurface(Context context)  {
+    public Button btnScore;
+    public int score;
+    public GameSurface(Context context, Button btnScore)  {
         super(context);
-
         // Make Game Surface focusable so it can handle events.
         this.setFocusable(true);
-
+        this.btnScore = btnScore;
+        this.score = 0;
         // Sét callback.
         this.getHolder().addCallback(this);
         this.setBackground(getResources().getDrawable(R.drawable.arkaplan));
@@ -136,7 +138,8 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
                         && chibi.getY() < y && y < chibi.getY()+ chibi.getHeight())  {
                     // Remove the current element from the iterator and the list.
                     iterator.remove();
-                    Log.i("LOGTAG", iterator.toString());
+                    this.score++;
+                    this.btnScore.setText("Puan: " + this.score);
                     // Create Explosion object.
                     Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.explosion);
                     Explosion explosion = new Explosion(this, bitmap,chibi.getX(),chibi.getY());
@@ -218,6 +221,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi1);
             ChibiCharacter chibi1 = new ChibiCharacter(this, chibiBitmap1, randomNum.nextInt(this.getWidth()) + x, randomNum.nextInt(this.getHeight()) + y);
             chibi1.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
+            chibi1.setAlive(true);
             this.chibiList.add(chibi1);
 
             x += 50;
@@ -228,6 +232,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         Bitmap chibiBitmap2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi2);
         ChibiCharacter chibi2 = new ChibiCharacter(this, chibiBitmap2, 300, 150);
         chibi2.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
+        chibi2.setAlive(true);
         this.chibiList.add(chibi2);
     }
     // Implements method of SurfaceHolder.Callback

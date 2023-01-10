@@ -32,6 +32,7 @@ public class ChibiCharacter extends GameObject {
 
     private int speed_x;
     private int speed_y;
+    private boolean alive;
 
     public ChibiCharacter(GameSurface gameSurface, Bitmap image, int x, int y) {
         super(image, 4, 3, x, y);
@@ -146,6 +147,9 @@ public class ChibiCharacter extends GameObject {
         this.movingVectorY = movingVectorY;
     }
 
+    public void setAlive(boolean alive){
+        this.alive = alive;
+    }
     public void setSpeed(int speed_x, int speed_y){
         if (this.speed_x <= 1)
             this.speed_x = 1;
