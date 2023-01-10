@@ -8,46 +8,53 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="11.0">
 
         <Button
             android:id="@+id/soundButton"
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Volume Close"
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:paddingBottom="0dp"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/greenButton"
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:text="Green Panel"
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:paddingBottom="0dp"
+            android:textSize="15dp" />
         <Button
             android:id="@+id/speedIncreaseButton"
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Speed Increase"
+            android:layout_weight="2"
+            android:text="Speed Up"
+            android:paddingBottom="0dp"
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:textSize="15dp" />
         <Button
             android:id="@+id/speedDecreaseButton"
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Decrease"
+            android:layout_weight="2"
+            android:text="Speed Down"
             android:textAllCaps="false"
-            android:textSize="18dp" />
+            android:paddingBottom="0dp"
+            android:textSize="15dp" />
         <Button
             android:id="@+id/btnPuan"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="18dp"
+            android:layout_width="2dp"
+            android:textSize="15dp"
+            android:layout_weight="3"
+            android:paddingBottom="0dp"
             android:text="Puan"/>
     </LinearLayout>
     <LinearLayout

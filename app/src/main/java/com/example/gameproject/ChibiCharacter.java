@@ -162,11 +162,13 @@ public class ChibiCharacter extends GameObject {
             this.speed_y = speed_y;
         }
     }
-
     public int getSpeedX(){
         return this.speed_x;
     }
     public int getSpeedY(){
         return this.speed_y;
+    }
+    public void setLastDrawNanoTime(long time){
+        this.lastDrawNanoTime = time;
     }
 }

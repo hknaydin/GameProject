@@ -14,7 +14,6 @@ public class GameActivity extends Activity {
 
     private GameSurface gameSurface = null;
     private LinearLayout canvasLayout = null;
-    private Button btnRed, btnGreen;
     int sound_check;
     Button btnPuan;
     @Override
@@ -27,6 +26,7 @@ public class GameActivity extends Activity {
         setContentView(R.layout.game_activity);
 
         btnPuan = findViewById(R.id.btnPuan);
+        btnPuan.setClickable(false);
         gameSurface = new GameSurface(this, btnPuan);
         sound_check = 1;
         // This layout is used to contain custom surfaceview object.
@@ -58,10 +58,8 @@ public class GameActivity extends Activity {
         findViewById(R.id.greenButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(gameSurface.soundPool == null)
-                    gameSurface.initSoundPool();
-                else {
-                    Toast.makeText(GameActivity.this, "sound "+ gameSurface.soundPool, Toast.LENGTH_SHORT).show();
+                if(gameSurface.soundPool != null) {
+                    gameSurface.set_background();
                 }
             }
         });
