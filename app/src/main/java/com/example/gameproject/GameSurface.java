@@ -29,6 +29,7 @@ import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -218,7 +219,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         Random randomNum = new Random();
         int enemy_size = randomNum.nextInt(10);
         int x = 50, y = 50;
-        for (int i = 0; i < enemy_size + 4; i++) {
+        for (int i = 0; i < enemy_size+5; i++) {
             Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi1);
             ChibiCharacter chibi1 = new ChibiCharacter(this, chibiBitmap1, randomNum.nextInt(this.getWidth()) + x, randomNum.nextInt(this.getHeight()) + y);
             chibi1.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
@@ -278,24 +279,24 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         Resources res = getResources();
         int []color = new int[7];
         Random rnd = new Random();
-            color[0] = R.color.purple_200;
-            color[1] = R.color.purple_500;
-            color[2] = R.color.purple_700;
-            color[3] = R.color.teal_200;
-            color[4] = R.color.teal_700;
-            color[5] = R.color.black;
-            color[6] = R.color.white;
+        color[0] = R.color.purple_200;
+        color[1] = R.color.purple_500;
+        color[2] = R.color.purple_700;
+        color[3] = R.color.teal_200;
+        color[4] = R.color.teal_700;
+        color[5] = R.color.black;
+        color[6] = R.color.white;
 
-        //this.setBackground(getResources().getDrawable(color[rnd.nextInt(5)]));
+        this.setBackground(getResources().getDrawable(color[rnd.nextInt(6)]));
 
         // Set the parent view background color. This can not set surfaceview background color.
-        this.setBackgroundColor(Color.BLUE);
+        //this.setBackgroundColor(Color.BLUE);
 
         // Set current surfaceview at top of the view tree.
         this.setZOrderOnTop(true);
 
         this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
-        this.getHolder().addCallback(this);
+        this.gameThread.setTime_mix(5);
         //this.setZOrderOnTop(true);
         //this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
         //this.gameThread.setRunning(false);
@@ -304,7 +305,5 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         //this.gameThread = new GameThread(this, this.getHolder());
         //this.gameThread.setRunning(true);
         //this.gameThread.start();
-
-
     }
 }

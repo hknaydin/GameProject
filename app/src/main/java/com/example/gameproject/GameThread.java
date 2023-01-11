@@ -8,9 +8,11 @@ public class GameThread extends Thread {
     private GameSurface gameSurface;
     private SurfaceHolder surfaceHolder;
     public long waitTime;
+    public int time_mix;
     public GameThread(GameSurface gameSurface, SurfaceHolder surfaceHolder)  {
         this.gameSurface= gameSurface;
         this.surfaceHolder= surfaceHolder;
+        this.time_mix = 1;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class GameThread extends Thread {
 
             try {
                 // Sleep.
-                this.sleep(waitTime);
+                this.sleep(waitTime * this.time_mix);
             } catch(InterruptedException e)  {
 
             }
@@ -60,4 +62,7 @@ public class GameThread extends Thread {
         this.running= running;
     }
     public boolean isRunning(){return this.running;}
+    public void setTime_mix(int time_mix){
+        this.time_mix = time_mix;
+    }
 }

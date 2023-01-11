@@ -14,51 +14,61 @@
         <Button
             android:id="@+id/soundButton"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="2"
             android:text="Volume Close"
             android:textAllCaps="false"
             android:paddingTop="0dp"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/rectangle"
             android:paddingBottom="0dp"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
 
         <Button
             android:id="@+id/greenButton"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="2"
+            android:layout_marginRight="3dp"
             android:text="Green Panel"
             android:textAllCaps="false"
             android:paddingTop="0dp"
+            android:background="@drawable/rectangle"
             android:paddingBottom="0dp"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
         <Button
             android:id="@+id/speedIncreaseButton"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="2"
+            android:layout_marginRight="3dp"
             android:text="Speed Up"
+            android:background="@drawable/rectangle"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:textAllCaps="false"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
         <Button
             android:id="@+id/speedDecreaseButton"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_marginRight="3dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
+            android:background="@drawable/rectangle"
+
             android:text="Speed Down"
             android:textAllCaps="false"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
         <Button
             android:id="@+id/btnPuan"
-            android:layout_height="wrap_content"
-            android:layout_width="2dp"
-            android:textSize="15dp"
+            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:textSize="10dp"
             android:layout_weight="3"
             android:paddingTop="0dp"
+            android:background="@drawable/rectangle"
             android:paddingBottom="0dp"
             android:text="Puan"/>
     </LinearLayout>
