@@ -18,6 +18,7 @@
             android:layout_weight="2"
             android:text="Volume Close"
             android:textAllCaps="false"
+            android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:textSize="15dp" />
 
@@ -28,6 +29,7 @@
             android:layout_weight="2"
             android:text="Green Panel"
             android:textAllCaps="false"
+            android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:textSize="15dp" />
         <Button
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Speed Up"
+            android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:textAllCaps="false"
             android:textSize="15dp" />
@@ -46,6 +49,7 @@
             android:layout_weight="2"
             android:text="Speed Down"
             android:textAllCaps="false"
+            android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:textSize="15dp" />
         <Button
@@ -54,6 +58,7 @@
             android:layout_width="2dp"
             android:textSize="15dp"
             android:layout_weight="3"
+            android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:text="Puan"/>
     </LinearLayout>

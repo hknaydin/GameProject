@@ -7,7 +7,7 @@ public class GameThread extends Thread {
     private boolean running;
     private GameSurface gameSurface;
     private SurfaceHolder surfaceHolder;
-
+    public long waitTime;
     public GameThread(GameSurface gameSurface, SurfaceHolder surfaceHolder)  {
         this.gameSurface= gameSurface;
         this.surfaceHolder= surfaceHolder;
@@ -39,7 +39,7 @@ public class GameThread extends Thread {
             long now = System.nanoTime() ;
             // Interval to redraw game
             // (Change nanoseconds to milliseconds)
-            long waitTime = (now - startTime)/1000000;
+            waitTime = (now - startTime)/1000000;
             if(waitTime < 10)  {
                 waitTime= 10; // Millisecond.
             }

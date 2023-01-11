@@ -42,7 +42,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     public GameThread gameThread;
 
     public List<ChibiCharacter> chibiList = new ArrayList<ChibiCharacter>();
-    private final List<Explosion> explosionList = new ArrayList<Explosion>();
+    private List<Explosion> explosionList = new ArrayList<Explosion>();
 
     private static final int MAX_STREAMS=100;
     private int soundIdExplosion;
@@ -286,7 +286,16 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             color[5] = R.color.black;
             color[6] = R.color.white;
 
-        this.setBackground(getResources().getDrawable(color[rnd.nextInt(5)]));
+        //this.setBackground(getResources().getDrawable(color[rnd.nextInt(5)]));
+
+        // Set the parent view background color. This can not set surfaceview background color.
+        this.setBackgroundColor(Color.BLUE);
+
+        // Set current surfaceview at top of the view tree.
+        this.setZOrderOnTop(true);
+
+        this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+        this.getHolder().addCallback(this);
         //this.setZOrderOnTop(true);
         //this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
         //this.gameThread.setRunning(false);
