@@ -43,6 +43,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     public GameThread gameThread;
 
     public List<ChibiCharacter> chibiList = new ArrayList<ChibiCharacter>();
+    public List<Wall> wallList = new ArrayList<Wall>();
     private List<Explosion> explosionList = new ArrayList<Explosion>();
 
     private static final int MAX_STREAMS=100;
@@ -193,6 +194,9 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             explosion.draw(canvas);
         }
 
+        for(Wall wall: this.wallList){
+            wall.draw(canvas);
+        }
     }
 
     // Implements method of SurfaceHolder.Callback
@@ -217,9 +221,9 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     }
     public void create_anime(){
         Random randomNum = new Random();
-        int enemy_size = randomNum.nextInt(10);
+        int enemy_size = randomNum.nextInt(2);
         int x = 50, y = 50;
-        for (int i = 0; i < enemy_size+5; i++) {
+        for (int i = 0; i < enemy_size; i++) {
             Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi1);
             ChibiCharacter chibi1 = new ChibiCharacter(this, chibiBitmap1, randomNum.nextInt(this.getWidth()) + x, randomNum.nextInt(this.getHeight()) + y);
             chibi1.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
@@ -236,6 +240,38 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         chibi2.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
         chibi2.setAlive(true);
         this.chibiList.add(chibi2);
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        int wall_x = 50;
+        int wall_y = 150;
+        for (int i=0; i< 3; i++){
+            Bitmap wall = BitmapFactory.decodeResource(this.getResources(), R.drawable.wall);
+            Wall wall_obj = new Wall(this, wall, wall_x, wall_y);
+            this.wallList.add(wall_obj);
+            wall_x += 500;
+            wall_y += 250;
+        }
+        wall_x = 1600;
+        wall_y = 400;
+
+        Bitmap wall = BitmapFactory.decodeResource(this.getResources(), R.drawable.wall);
+        Wall wall_obj = new Wall(this, wall, wall_x, wall_y);
+        this.wallList.add(wall_obj);
+
+
+
+        wall_x = 50;
+        wall_y = 120;
+
+        for (int i=0; i< 3; i++){
+            wall = BitmapFactory.decodeResource(this.getResources(), R.drawable.wall_horizontal);
+
+            wall_obj = new Wall(this, wall, wall_x, wall_y);
+            this.wallList.add(wall_obj);
+            wall_x += 600;
+            wall_y += 100;
+        }
+
     }
     // Implements method of SurfaceHolder.Callback
     @Override

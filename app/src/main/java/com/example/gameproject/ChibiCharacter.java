@@ -114,7 +114,10 @@ public class ChibiCharacter extends GameObject {
             this.y= this.gameSurface.getHeight()- height;
             this.movingVectorY = - this.movingVectorY ;
         }
-
+        if(isIntersect()){
+            this.movingVectorX = - this.movingVectorX;
+            this.movingVectorY = - this.movingVectorY;
+        }
         // rowUsing
         if( movingVectorX > 0 )  {
             if(movingVectorY > 0 && Math.abs(movingVectorX) < Math.abs(movingVectorY)) {
@@ -170,5 +173,19 @@ public class ChibiCharacter extends GameObject {
     }
     public void setLastDrawNanoTime(long time){
         this.lastDrawNanoTime = time;
+    }
+    public boolean isIntersect(){
+        boolean state = false;
+        Wall temp;
+
+        for(int wall = 0; wall < this.gameSurface.wallList.size(); wall++){
+            temp = this.gameSurface.wallList.get(wall);
+            if(this.x < (temp.x + temp.width) && ((this.x +this.width) > temp.x) &&
+                    (this.y < temp.y + temp.height) && (this.y + this.height > temp.y )){
+                state = true;
+            }
+        }
+
+        return state;
     }
 }
