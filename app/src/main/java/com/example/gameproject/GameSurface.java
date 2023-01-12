@@ -289,6 +289,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
         /////////////////////////////////////////////////////////////////////////////////////////
         Text text = new Text(wall,100, 100, 100, 100);
+        text.set_Color(Color.BLACK);
         this.textList.add(text);
     }
     // Implements method of SurfaceHolder.Callback

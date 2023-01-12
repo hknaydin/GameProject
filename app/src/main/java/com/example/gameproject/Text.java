@@ -9,13 +9,14 @@ import android.graphics.Typeface;
 
 public class Text extends GameObject{
     int score;
+    int color;
     public Text(Bitmap image, int rowCount, int colCount, int x, int y) {
         super(image, rowCount, colCount, x, y);
     }
     public void draw(Canvas canvas)  {
 
         Paint paint = new Paint();
-        paint.setColor(Color.BLACK);
+        paint.setColor(color);
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
 
@@ -32,5 +33,8 @@ public class Text extends GameObject{
     }
     public void set_rect(){
 
+    }
+    public void set_Color(int color){
+        this.color = color;
     }
 }
