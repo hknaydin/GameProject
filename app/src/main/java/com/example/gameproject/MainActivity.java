@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private Button btnStart;
+    private ImageButton btnAbout;
     MediaPlayer mp3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         btnStart = findViewById(R.id.btnStart);
+        btnAbout = findViewById(R.id.btnAbout);
 
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mp3.stop();
+                mp3 = null;
+
+                Intent about_activity = new Intent(MainActivity.this, About.class);
+                startActivity(about_activity);
+                finish();
+            }
+        });
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

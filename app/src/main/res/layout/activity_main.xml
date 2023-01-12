@@ -19,4 +19,23 @@
         android:background="@drawable/circle"
         android:layout_centerInParent="true"/>
 
+    <ImageButton
+        android:id="@+id/btnAbout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:shadowColor="#ffAfffff"
+        android:shadowDx="10"
+        android:shadowDy="0"
+        android:shadowRadius="52"
+        android:text="About"
+        android:layout_marginRight="4dp"
+        android:src="@drawable/person2"
+        android:background="@drawable/circle_person" />
+
+
 </RelativeLayout>

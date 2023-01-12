@@ -14,4 +14,8 @@ public class Wall extends GameObject{
         canvas.drawBitmap(bitmap,x, y, null);
         // Last draw time.
     }
+
+    public void update(){
+
+    }
 }

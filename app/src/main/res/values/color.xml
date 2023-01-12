@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="listcolors">
+        <item>@color/purple_200</item>
+        <item>@color/purple_200</item>
+        <item>@color/purple_200</item>
+        <item>@color/purple_200</item>
+        <item>@color/purple_200</item>
+        <item>@color/purple_200</item>
+        <item>@color/purple_200</item>
+    </string-array>
+</resources>

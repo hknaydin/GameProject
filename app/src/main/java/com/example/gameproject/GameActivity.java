@@ -1,8 +1,12 @@
 package com.example.gameproject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,6 +20,9 @@ public class GameActivity extends Activity {
     private LinearLayout canvasLayout = null;
     int sound_check;
     Button btnPuan;
+    Handler handler;
+    Runnable runnable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,8 +98,29 @@ public class GameActivity extends Activity {
         this.setContentView(gameSurface);
 
         */
-
+        makeHandler();
     }
+
+    private void makeHandler() {
+        handler=new Handler();
+        runnable=new Runnable() {
+            @Override
+            public void run() {
+                    final Handler handler=new Handler(Looper.getMainLooper());
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            //Toast.makeText(GameActivity.this, "Puan: " + gameSurface.score, Toast.LENGTH_SHORT).show();
+                        }
+                    },500);
+
+                // making image visible at random positions
+                handler.postDelayed(this,500);
+            }
+        };
+        handler.post(runnable);
+    }
+
     @Override
     public void onBackPressed() {
         // TODO Auto-generated method stub
@@ -102,6 +130,8 @@ public class GameActivity extends Activity {
         gameSurface.close_sound();
         sound_check = 0;
         gameSurface.gameThread = null;
+
+        handler.removeCallbacks(runnable);
         super.onBackPressed();
     }
     @Override

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".About">
+    <TextView
+        android:id="@+id/textNameGame"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/step_by_step"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:textSize="30dp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textDeveloper"
+        android:layout_below="@+id/textNameGame"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:text="@string/developer"
+        android:paddingTop="14dp"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="© Copyright hakayd28@gmail.com"
+        android:id="@+id/textAbout"
+        android:layout_below="@+id/textDeveloper"
+        android:layout_centerHorizontal="true"
+        android:gravity="center|center_horizontal|fill_vertical"
+        android:textStyle="bold" />
+
+</RelativeLayout>

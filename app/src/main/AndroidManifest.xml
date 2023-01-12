@@ -10,27 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GameProject">
         <activity
-            android:name=".MainActivity"
+            android:name=".About"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
         <activity
             android:name=".GameActivity"
-            android:screenOrientation="landscape"
-            android:exported="true">
-        </activity>
+            android:exported="true"
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".SplashScreen"
+            android:exported="true"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:exported="true">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

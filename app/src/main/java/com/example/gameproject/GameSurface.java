@@ -1,7 +1,11 @@
 package com.example.gameproject;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -30,6 +34,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -146,7 +151,6 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
                     // Create Explosion object.
                     Bitmap bitmap = BitmapFactory.decodeResource(this.getResources(),R.drawable.explosion);
                     Explosion explosion = new Explosion(this, bitmap,chibi.getX(),chibi.getY());
-
                     this.explosionList.add(explosion);
                 }
             }
@@ -163,6 +167,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update()  {
+
+        for(Wall wall: this.wallList){
+            wall.update();
+        }
 
         for(ChibiCharacter chibi: chibiList) {
             chibi.update();
@@ -186,16 +194,17 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void draw(Canvas canvas)  {
         super.draw(canvas);
+
+        for(Wall wall: this.wallList){
+            wall.draw(canvas);
+        }
+
         for(ChibiCharacter chibi: chibiList)  {
             chibi.draw(canvas);
         }
 
         for(Explosion explosion: this.explosionList)  {
             explosion.draw(canvas);
-        }
-
-        for(Wall wall: this.wallList){
-            wall.draw(canvas);
         }
     }
 
@@ -223,7 +232,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         Random randomNum = new Random();
         int enemy_size = randomNum.nextInt(2);
         int x = 50, y = 50;
-        for (int i = 0; i < enemy_size; i++) {
+        for (int i = 0; i < enemy_size +2; i++) {
             Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.chibi1);
             ChibiCharacter chibi1 = new ChibiCharacter(this, chibiBitmap1, randomNum.nextInt(this.getWidth()) + x, randomNum.nextInt(this.getHeight()) + y);
             chibi1.setSpeed(randomNum.nextInt(5), randomNum.nextInt(5));
@@ -243,7 +252,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
 
         ///////////////////////////////////////////////////////////////////////////////////////////
         int wall_x = 50;
-        int wall_y = 150;
+        int wall_y = 250;
         for (int i=0; i< 3; i++){
             Bitmap wall = BitmapFactory.decodeResource(this.getResources(), R.drawable.wall);
             Wall wall_obj = new Wall(this, wall, wall_x, wall_y);
@@ -263,7 +272,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         wall_x = 50;
         wall_y = 120;
 
-        for (int i=0; i< 3; i++){
+        for (int i=0; i< 4; i++){
             wall = BitmapFactory.decodeResource(this.getResources(), R.drawable.wall_horizontal);
 
             wall_obj = new Wall(this, wall, wall_x, wall_y);
@@ -305,16 +314,15 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             chibi.setSpeed(chibi.getSpeedX() + 2, 1 + chibi.getSpeedY());
         }
     }
-
     public void speed_decrease_for_enemy(){
         for(ChibiCharacter chibi: chibiList)  {
             chibi.setSpeed(chibi.getSpeedX() - 2, chibi.getSpeedY() - 1);
         }
     }
-    public void set_background(){
-        Resources res = getResources();
+    public int get_color(){
         int []color = new int[7];
         Random rnd = new Random();
+
         color[0] = R.color.purple_200;
         color[1] = R.color.purple_500;
         color[2] = R.color.purple_700;
@@ -323,7 +331,12 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         color[5] = R.color.black;
         color[6] = R.color.white;
 
-        this.setBackground(getResources().getDrawable(color[rnd.nextInt(6)]));
+        return color[rnd.nextInt(color.length)];
+    }
+    public void set_background(){
+
+        this.setBackground(getResources().getDrawable(get_color()));
+
 
         // Set the parent view background color. This can not set surfaceview background color.
         //this.setBackgroundColor(Color.BLUE);
