@@ -50,6 +50,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     public List<ChibiCharacter> chibiList = new ArrayList<ChibiCharacter>();
     public List<Wall> wallList = new ArrayList<Wall>();
     private List<Explosion> explosionList = new ArrayList<Explosion>();
+    private List<Text> textList = new ArrayList<Text>();
 
     private static final int MAX_STREAMS=100;
     private int soundIdExplosion;
@@ -171,7 +172,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         for(Wall wall: this.wallList){
             wall.update();
         }
-
+        for(Text text: this.textList){
+            text.set_score(this.score);
+            text.update();
+        }
         for(ChibiCharacter chibi: chibiList) {
             chibi.update();
         }
@@ -198,7 +202,9 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         for(Wall wall: this.wallList){
             wall.draw(canvas);
         }
-
+        for(Text text: this.textList){
+            text.draw(canvas);
+        }
         for(ChibiCharacter chibi: chibiList)  {
             chibi.draw(canvas);
         }
@@ -281,6 +287,9 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             wall_y += 100;
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////
+        Text text = new Text(wall,100, 100, 100, 100);
+        this.textList.add(text);
     }
     // Implements method of SurfaceHolder.Callback
     @Override
